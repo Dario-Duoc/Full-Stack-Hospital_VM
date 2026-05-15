@@ -1,0 +1,48 @@
+package com.hospitalvm.controller;
+
+import com.example.dto.ProductoDTO;
+import com.example.service.CargaMasivaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
+public class CargaController {
+
+    @Autowired
+    private CargaMasivaService service;
+
+    // 🔹 Endpoint de prueba
+    @GetMapping("/carga")
+    public String prueba() {
+        return "API funcionando";
+    }
+
+    // 🔹 Carga masiva de productos
+    @PostMapping("/productos/masivo")
+    public ResponseEntity<?> cargar(@RequestBody List<ProductoDTO> productos) {
+        try {
+            if (productos == null || productos.isEmpty()) {
+                return ResponseEntity.badRequest().body("La lista está vacía");
+            }
+
+            long inicio = System.currentTimeMillis();
+            service.procesarCarga(productos);
+            long fin = System.currentTimeMillis();
+
+            return ResponseEntity.ok(
+                "Éxito: " + productos.size() + 
+                " procesados en " + (fin - inicio) + " ms"
+            );
+
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error en la carga: " + e.getMessage());
+        }
+    }
+}
