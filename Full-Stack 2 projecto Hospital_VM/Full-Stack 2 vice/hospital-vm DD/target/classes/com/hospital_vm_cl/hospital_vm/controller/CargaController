@@ -16,18 +16,16 @@ public class CargaController {
     @Autowired
     private CargaMasivaService service;
 
-    // 🔹 Endpoint de prueba
     @GetMapping("/carga")
     public String prueba() {
         return "API funcionando";
     }
 
-    // 🔹 Carga masiva de productos
     @PostMapping("/productos/masivo")
     public ResponseEntity<?> cargar(@RequestBody List<ProductoDTO> productos) {
         try {
             if (productos == null || productos.isEmpty()) {
-                return ResponseEntity.badRequest().body("La lista está vacía");
+                return ResponseEntity.badRequest().body("La lista esta vacia");
             }
 
             long inicio = System.currentTimeMillis();
@@ -35,7 +33,7 @@ public class CargaController {
             long fin = System.currentTimeMillis();
 
             return ResponseEntity.ok(
-                "Éxito: " + productos.size() + 
+                "Exito: " + productos.size() + 
                 " procesados en " + (fin - inicio) + " ms"
             );
 

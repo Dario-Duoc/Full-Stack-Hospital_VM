@@ -1,27 +1,63 @@
+package com.hospital_vm_cl.hospital_vm.config;
+
+import com.hospital_vm_cl.hospital_vm.security.JwtAuthenticationFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private JwtFilter jwtFilter;
+    private final JwtAuthenticationFilter jwtAuthFilter;
+
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable()) // Deshabilitado para APIs REST
+            .cors(cors -> cors.configure(http))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado por usar JWT
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                // 1. Permiso abierto para el Login
+                .requestMatchers("/api/auth/**").permitAll()
+
+                // 2. Reglas para el Módulo de MÈDICOS
+                // Solo el ADMIN puede modificar, crear o borrar médicos (POST, PUT, DELETE)
+                .requestMatchers(HttpMethod.POST, "/api/medicos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/medicos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/medicos/**").hasRole("ADMIN")
+                // ADMIN y MEDICO pueden listar médicos; PACIENTE también si necesita ver la cartola
+                .requestMatchers(HttpMethod.GET, "/api/medicos/**").hasAnyRole("ADMIN", "MEDICO", "PACIENTE")
+
+                // 3. Reglas para el Módulo de PACIENTES
+                // ADMIN y MEDICO pueden registrar o modificar pacientes
+                .requestMatchers(HttpMethod.POST, "/api/pacientes/**").hasAnyRole("ADMIN", "MEDICO")
+                .requestMatchers(HttpMethod.PUT, "/api/pacientes/**").hasAnyRole("ADMIN", "MEDICO")
+                .requestMatchers(HttpMethod.DELETE, "/api/pacientes/**").hasRole("ADMIN") // El borrado lógico/físico suele ser solo del Admin
+                // PACIENTE, MEDICO y ADMIN pueden leer datos de pacientes (GET)
+                .requestMatchers(HttpMethod.GET, "/api/pacientes/**").hasAnyRole("ADMIN", "MEDICO", "PACIENTE")
+
+                // Cualquier otra petición requiere autenticación
                 .anyRequest().authenticated()
-            );
-
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-
+            )
+            // Inyectamos tu filtro JWT antes del filtro de autenticación nativo de Spring
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+            
+            // Libera el acceso público a las URLs de Swagger.
+            .requestMatchers(
+    "/v3/api-docs/**",
+    "/swagger-ui/**",
+    "/swagger-ui.html"
+).permitAll()
         return http.build();
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
-

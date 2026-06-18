@@ -33,6 +33,15 @@ public class Paciente {
     @JsonIgnoreProperties("pacientes")
     private Medico medico;
 
+    private String especialidad;
+
+    @Column(columnDefinition = "TEXT")
+    private String comentario;
+
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
     public String getRun() { return run; }
     public void setRun(String run) { this.run = run; }
 
@@ -48,9 +57,12 @@ public class Paciente {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
     public Medico getMedico() { return medico; }
     public void setMedico(Medico medico) { this.medico = medico; }
+
+    public String getEspecialidad() { return especialidad; }
+    public void setEspecialidad(String especialidad) { this.especialidad = especialidad; }
+
+    public String getComentario() { return comentario; }
+    public void setComentario(String comentario) { this.comentario = comentario; }
 }

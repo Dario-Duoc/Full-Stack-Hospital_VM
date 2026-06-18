@@ -1,10 +1,22 @@
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\AuthController.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\AdminController.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\HospitalVmApplication.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\JwtFilter.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\Paciente.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\ProductoDTO.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\Role.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\User.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\repository\UserRepository.java
-C:\Users\chent\Desktop\trabajo 2 fullstacks\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\service\UserService.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\client\ExternoClient.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\AdminController.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\AuthController.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\GlobalExceptionHandler.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\MedicoController.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\controller\PacienteController.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\dto\AuthResponse.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\dto\LoginRequest.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\dto\PacienteDTO.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\HospitalVmApplication.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\Medico.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\Paciente.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\ProductoDTO.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\Role.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\model\User.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\repository\MedicoRepository.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\repository\PacienteRepository.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\repository\UserRepository.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\service\JwtService.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\service\MedicoService.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\service\PacienteService.java
+c:\Users\DioDo\OneDrive\Documentos\GitHub\Full-Stack 2 projecto Hospital_VM\Full-Stack 2 vice\hospital-vm DD\src\main\java\com\hospital_vm_cl\hospital_vm\service\UserService.java

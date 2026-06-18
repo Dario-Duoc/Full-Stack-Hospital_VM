@@ -1,15 +1,10 @@
 package com.hospital_vm_cl.hospital_vm.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import jakarta.validation.constraints.*;
 
-@Data
 public class PacienteDTO {
 
     @NotBlank(message = "El RUN es obligatorio")
-    @Pattern(regexp = "^[0-9]{7,8}-[0-9Kk]{1}$", message = "Formato de RUN inválido (ej: 12345678-9)")
     private String run;
 
     @NotBlank(message = "El nombre es obligatorio")
@@ -21,9 +16,36 @@ public class PacienteDTO {
     @NotBlank(message = "La fecha de nacimiento es obligatoria")
     private String fechaNacimiento;
 
+    @Email(message = "Correo inválido")
     @NotBlank(message = "El correo es obligatorio")
-    @Email(message = "Debe ser un correo electrónico válido")
     private String correo;
 
     private Long medicoId;
+    
+    private String especialidad;
+    private String comentario;
+
+    public String getRun() { return run; }
+    public void setRun(String run) { this.run = run; }
+
+    public String getNombres() { return nombres; }
+    public void setNombres(String nombres) { this.nombres = nombres; }
+
+    public String getApellidos() { return apellidos; }
+    public void setApellidos(String apellidos) { this.apellidos = apellidos; }
+
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+
+    public String getCorreo() { return correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
+
+    public Long getMedicoId() { return medicoId; }
+    public void setMedicoId(Long medicoId) { this.medicoId = medicoId; }
+
+    public String getEspecialidad() { return especialidad; }
+    public void setEspecialidad(String specialty) { this.especialidad = specialty; }
+
+    public String getComentario() { return comentario; }
+    public void setComentario(String comentario) { this.comentario = comentario; }
 }

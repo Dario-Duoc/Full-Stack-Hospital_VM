@@ -1,42 +1,39 @@
 package com.hospital_vm_cl.hospital_vm.service;
 
-import org.springframework.stereotype.Service;
 import com.hospital_vm_cl.hospital_vm.model.User;
 import com.hospital_vm_cl.hospital_vm.repository.UserRepository;
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.util.Optional;
+import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 
 @Service
 public class UserService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+    
+    private final UserRepository userRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @PostConstruct
-    public void init() {
-        logger.info("UserService inicializado correctamente.");
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public String prueba() {
-        return "ok";
-    }
+    public User guardar(User usuario) {
+        if (usuario == null) {
+            return null;
+        }
 
-    public Optional<User> buscarPorNombreUsuario(String username) {
-        return userRepository.findByUsername(username);
-    }
+        if (usuario.getRoles() == null) {
+            usuario.setRoles(new ArrayList<>());
+        }
 
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("Usuario '" + username + "' no encontrado"));
-    }
+        String email = usuario.getEmail().toLowerCase().trim();
 
-    public User save(User user) {
-        logger.info("Registrando nuevo usuario en el sistema: {}", user.getUsername());
-        return userRepository.save(user);
+        if (email.endsWith("@admin.hospitalduoc.cl")) {
+            usuario.getRoles().add("ROLE_ADMIN");
+        } else if (email.endsWith("@hospitalduoc.cl")) {
+            usuario.getRoles().add("ROLE_MEDICO");
+        } else {
+            usuario.getRoles().add("ROLE_PACIENTE");
+        }
+
+        return userRepository.save(usuario);
     }
 }
