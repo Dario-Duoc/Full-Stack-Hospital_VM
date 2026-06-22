@@ -2,7 +2,7 @@
 
 Este proyecto es el avance técnico formal para la asignatura de Desarrollo FullStack. Consiste en una arquitectura backend distribuida basada en microservicios diseñada para gestionar de manera integral las operaciones de un entorno hospitalario.
 
-## 🚀 Características Técnicas
+## Características Técnicas
 
 * **Arquitectura:** Microservicios independientes bajo el patrón CSR (*Controller-Service-Repository*).
 * **Persistencia:** Cada microservicio gestiona su propia base de datos relacional (**MySQL**) mediante **Spring Data JPA** e **Hibernate**.
@@ -144,6 +144,27 @@ Método: GET
 ```
 Validación de Errores
 Si intentas enviar un JSON omitiendo campos obligatorios (como el formato del correo o nombres vacíos), el sistema interceptará la petición mediante el GlobalExceptionHandler y retornará un código de estado 400 Bad Request acompañado de un desglose con las reglas de Jakarta que han sido infringidas.
+
+Entono de EJECUCION EXTERNO
+1. Mover la terminal a la carpeta de tu proyecto actual
+Primero debemos asegurarnos de que PowerShell esté "parado" en la ruta del proyecto que arreglamos:
+
+PowerShell
+cd "C:\ejem\ejem\OneDrive\ejem\ejem\ejem\hospital-vm DD"
+2. Comando para limpiar y arrancar el servidor (Main)
+Para compilar el código de producción, levantar la base de datos MySQL y dejar el backend escuchando peticiones para Swagger o Postman, ejecuta:
+
+PowerShell
+./mvnw clean spring-boot:run
+(Déjala abierta, verás que la consola se queda activa mostrando logs. Eso significa que el servidor está encendido).
+
+Extras (Por si necesitas usar la consola para otras tareas):
+Para detener el servidor: Si necesitas apagar la aplicación para cambiar algo en el código, simplemente presiona las teclas Ctrl + C dentro de la ventana de PowerShell y confirma con S (Sí).
+
+Para volver a ejecutar los tests unitarios: Si quieres comprobar las reglas de seguridad sin levantar todo el servidor, abre otra pestaña de PowerShell y ejecuta:
+
+PowerShell
+./mvnw clean test
 
 Gracias por ver hasta acá, espero este código sea de ayuda para los buscadores de sabiduría.
 By D_Gamn
