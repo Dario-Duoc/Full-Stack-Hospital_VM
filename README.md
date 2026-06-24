@@ -79,14 +79,19 @@ Para ejecutar los test, haz clic derecho sobre el archivo en tu IDE y selecciona
 Creación de USUARIO   // ADMINISTRADOR-MEDICO
 http://localhost:8080/api/auth/register
 {
-    "name": "Diego Administrador",
-    "email": "diego@admin.hospitalduoc.cl",
-    "password": "admin123"
+  "name": "Diego Administrador",
+  "email": "diego@admin.hospitalduoc.cl",
+  "password": "admin123",
+  "enabled": true,
+  "roles": ["ADMIN"]
 }
 (Asignación de ROLES)
 ADMINITRADOR   email": "diego@admin.hospitalduoc.cl
+["ADMIN"]
 MEDICOS        email": diego@hospitalduoc.cl
+["MEDICO"]
 PACIENTE       email": diego@gmail.cl
+["PACIENTE"]
 
 --------------------------------------------
 Obtención de TOKEN
